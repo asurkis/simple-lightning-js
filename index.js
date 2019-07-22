@@ -56,20 +56,16 @@ function onAnimationFrame(currentTime) {
     const height = mainCanvas.height;
     const context = mainCanvas.getContext('2d');
 
-    context.strokeStyle = 'black';
+    context.strokeStyle = 'white';
     context.lineWidth = 5;
 
-    // context.fillStyle = 'rgba(255, 255, 255, 0.1)';
-    // context.fillRect(0, 0, width, height);
+    context.fillStyle = 'rgba(0, 0, 0, 0.1)';
+    context.fillRect(0, 0, width, height);
 
-    // const period = 100;
-    // if (Math.floor(currentTime / period) > Math.floor(previousTime / period)) {
-    if (true) {
-        context.fillStyle = 'rgba(255, 255, 255, 0.5)';
-        context.fillRect(0, 0, width, height);
-        for (let i = 0; i < 2; i++) {
-            drawLightning(context, { x: 0, y: height / 2, }, { x: width, y: height / 2, });
-        }
+    const interval = 200;
+    if (Math.floor(currentTime / interval) > Math.floor(previousTime / interval)) {
+        drawLightning(context, { x: 0, y: 0 }, { x: width, y: height });
+        drawLightning(context, { x: width, y: 0 }, { x: 0, y: height });
     }
 
     previousTime = currentTime;
